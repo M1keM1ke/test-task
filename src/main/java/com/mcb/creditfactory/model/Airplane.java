@@ -8,26 +8,26 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+@Entity
+@Table(name = "AIRPLANE")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "CAR")
-public class Car {
+public class Airplane {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
     private String brand;
     private String model;
-    private Double power;
-
+    private String manufacturer;
     @Column(name = "year_of_issue")
     private Short year;
-
-    @Column(name = "assessed_value")
+    @Column(name = "fuelcapacity")
+    private Integer fuel;
+    private Integer seats;
     private BigDecimal value;
 
-    @OneToMany(mappedBy = "car", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "airplane", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private List<Valuation> valuations;
 }
